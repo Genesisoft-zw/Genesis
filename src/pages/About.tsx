@@ -61,8 +61,7 @@ export function About() {
     {
       name: "Bruce Chigwa",
       role: "CEO & Co-Founder",
-      image:
-        "/bruce.jpg",
+      image: "/bruce.jpg",
       bio: "Bruce leads our vision for digital innovation in Africa.",
       expertise: [
         "Full-stack Development",
@@ -105,7 +104,7 @@ export function About() {
               Founded in 2025, Genesisoft emerged from a vision to transform
               Zimbabwe's digital landscape. We believe in the power of
               technology to create positive change and drive economic growth
-              across Africa.
+              across Africa
             </p>
           </div>
         </div>
