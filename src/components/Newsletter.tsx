@@ -1,0 +1,79 @@
+import React, { useState } from "react";
+import { Send } from "lucide-react";
+import { supabase } from "../supabaseClient.js";
+
+export function Newsletter() {
+  const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Basic email validation
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
+
+    // Insert email into Supabase
+    const { error: insertError } = await supabase
+      .from("newsletters")
+      .insert([{ email }]);
+
+    if (insertError) {
+      setError("Error subscribing to newsletter. Please try again later.");
+    } else {
+      setSubscribed(true);
+      setEmail("");
+    }
+
+    // Reset success message after 5 seconds
+    setTimeout(() => {
+      setSubscribed(false);
+      setError("");
+    }, 5000);
+  };
+
+  return (
+    <div className="bg-blue-500 dark:bg-blue-900 rounded-xl p-7 border-4 border-blue-500 shadow-lg transition-colors duration-300">
+      <h3 className="text-2xl font-bold text-white mb-4">Stay Updated</h3>
+      <p className="text-blue-100 mb-6">
+        Subscribe to our newsletter for the latest tech insights, industry
+        trends, and exclusive offers.
+      </p>
+
+      {subscribed ? (
+        <div className="bg-green-500 text-white p-4 rounded-lg mb-4 fade-in">
+          Thank you for subscribing! We'll be in touch soon.
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <div className="flex w-full max-w-md">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Your email address"
+                className="flex-grow px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600 transition-colors duration-300 max-w-full"
+                aria-label="Email address"
+              />
+              <button
+                type="submit"
+                className="bg-gray-900 dark:bg-white text-blue-600 hover:bg-blue-50 px-4 py-3 rounded-r-lg font-semibold transition-colors duration-300 flex items-center"
+              >
+                <span className="hidden md:inline">Subscribe</span>
+                <Send className="ml-2 w-4 h-4" />
+              </button>
+            </div>
+            {error && <p className="text-red-200 text-sm mt-2">{error}</p>}
+          </div>
+          <p className="text-blue-200 text-xs">
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </form>
+      )}
+    </div>
+  );
+}
