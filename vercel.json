@@ -1,7 +1,7 @@
 {
-    "routes": [
-        { "src": "/robots.txt", "dest": "/robots.txt" },
-        { "src": "/sitemap.txt", "dest": "/sitemap.txt" },
-        { "src": "/(.*)", "dest": "/index.html" }
-    ]
+  "rewrites": [
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/sitemap.txt", "destination": "/sitemap.txt" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
