@@ -1,5 +1,6 @@
 import React from "react";
 import { Footer } from "../components/Footer";
+import { Helmet } from "react-helmet-async";
 
 // Privacy policy content structured for easy updates
 const privacyContent = [
@@ -68,55 +69,65 @@ const privacyContent = [
 
 export function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
-      {/* Main content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        {/* Privacy Policy Header */}
-        <header className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            {privacyContent[0].title}
-          </h1>
-          <p className="text-gray-600 dark:text-gray-300">
-            {privacyContent[0].description}
-          </p>
-        </header>
-
-        {/* Dynamic Sections */}
-        {privacyContent.slice(1).map((section, index) => (
-          <section
-            key={index}
-            className="mt-12"
-            aria-labelledby={`section-${index}`}
-          >
-            <h2
-              id={`section-${index}`}
-              className="text-2xl font-semibold text-gray-900 dark:text-white mb-4"
-            >
-              {section.title}
-            </h2>
+    <>
+      <Helmet>
+        <title>Home</title>
+        <meta
+          name="description"
+          content="If you have any questions about this privacy policy or our data practices, please contact us at info@genesisoft.co.zw"
+        />
+        <link rel="canonical" href="/privacy-policy" />
+      </Helmet>
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+        {/* Main content */}
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          {/* Privacy Policy Header */}
+          <header className="mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              {privacyContent[0].title}
+            </h1>
             <p className="text-gray-600 dark:text-gray-300">
-              {section.description}
+              {privacyContent[0].description}
             </p>
-            {section.points && (
-              <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 mt-2">
-                {section.points.map((point, i) => (
-                  <li key={i} className="mb-2">
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {section.contact && (
-              <p className="text-gray-600 dark:text-gray-300 mt-4">
-                <strong>Contact:</strong> {section.contact}
-              </p>
-            )}
-          </section>
-        ))}
-      </main>
+          </header>
 
-      {/* Footer */}
-      <Footer />
-    </div>
+          {/* Dynamic Sections */}
+          {privacyContent.slice(1).map((section, index) => (
+            <section
+              key={index}
+              className="mt-12"
+              aria-labelledby={`section-${index}`}
+            >
+              <h2
+                id={`section-${index}`}
+                className="text-2xl font-semibold text-gray-900 dark:text-white mb-4"
+              >
+                {section.title}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                {section.description}
+              </p>
+              {section.points && (
+                <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 mt-2">
+                  {section.points.map((point, i) => (
+                    <li key={i} className="mb-2">
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {section.contact && (
+                <p className="text-gray-600 dark:text-gray-300 mt-4">
+                  <strong>Contact:</strong> {section.contact}
+                </p>
+              )}
+            </section>
+          ))}
+        </main>
+
+        {/* Footer */}
+        <Footer />
+      </div>
+    </>
   );
 }
