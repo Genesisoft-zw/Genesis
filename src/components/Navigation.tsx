@@ -35,7 +35,7 @@ export function Navigation() {
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
-                name="menu-toggle"
+                aria-label="menu-toggle"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >

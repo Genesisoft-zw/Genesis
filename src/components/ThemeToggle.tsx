@@ -7,7 +7,7 @@ export function ThemeToggle() {
 
   return (
     <button
-      name='theme-toggle'
+      title='theme-toggle'
       onClick={toggleTheme}
       className="p-2 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400
                  hover:bg-gray-200 dark:hover:bg-gray-700"
