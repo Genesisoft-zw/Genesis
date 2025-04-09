@@ -1,7 +1,7 @@
 {
-    "rewrites": [
-        { "source": "/(.*)", "destination": "/index.html", "has": [
-            { "type": "path", "value": "(?!robots\\.txt|sitemap\\.txt).*" }
-        ]}
+    "routes": [
+        { "src": "/robots.txt", "dest": "/robots.txt" },
+        { "src": "/sitemap.txt", "dest": "/sitemap.txt" },
+        { "src": "/(.*)", "dest": "/index.html" }
     ]
 }
