@@ -98,7 +98,7 @@ export function About() {
         <title>Home</title>
         <meta
           name="description"
-          content="Genesisoft is a Private Business Corporation (PBC) based in Zimbabwe, established to deliver reliable and innovative software solutions. Our mission is to empower businesses and individuals through impactful digital solutions. We specialize in web and mobile application development, graphic design, and ai chatbots."
+          content="Genesisoft is a Private Business Corporation (PBC) based in Zimbabwe, established to deliver reliable and innovative software solutions. We specialize in web and mobile application development, graphic design, and ai chatbots."
         />
         <link rel="canonical" href="/about" />
       </Helmet>
@@ -205,7 +205,7 @@ export function About() {
 
         {/* Team Section */}
         <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 align-items-center">
             <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-16 animate-on-scroll transition-colors duration-300">
               Meet Our Leadership Team
             </h2>
