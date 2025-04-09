@@ -71,12 +71,15 @@ export function PrivacyPolicy() {
   return (
     <>
       <Helmet>
-        <title>Home</title>
+        <title>Privacy Policy</title>
         <meta
           name="description"
           content="If you have any questions about this privacy policy or our data practices, please contact us at info@genesisoft.co.zw"
         />
-        <link rel="canonical" href="/privacy-policy" />
+        <link
+          rel="canonical"
+          href="https://www.genesisoft.co.zw/privacy-policy"
+        />
       </Helmet>
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
         {/* Main content */}

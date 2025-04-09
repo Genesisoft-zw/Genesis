@@ -130,7 +130,7 @@ export function Home() {
           name="description"
           content="Genesisoft, your partner in web, mobile, and design excellence. Get your website, mobile app, and graphic design solutions today!"
         />
-        <link rel="canonical" href="/" />
+        <link rel="canonical" href="https://www.genesisoft.co.zw/" />
       </Helmet>
       <div className="min-h-screen bg-blue-50 dark:bg-gray-900 pt-16 transition-colors duration-300">
         {/* Hero Section */}

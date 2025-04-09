@@ -98,9 +98,9 @@ export function About() {
         <title>Home</title>
         <meta
           name="description"
-          content="Genesisoft is a Private Business Corporation (PBC) based in Zimbabwe, established to deliver reliable and innovative software solutions. We specialize in web and mobile application development, graphic design, and ai chatbots."
+          content="Genesisoft specializes in web and mobile application development, graphic design, and ai chatbots."
         />
-        <link rel="canonical" href="/about" />
+        <link rel="canonical" href="https://www.genesisoft.co.zw/about" />
       </Helmet>
 
       <div className="min-h-screen bg-white dark:bg-gray-900 pt-16 transition-colors duration-300">
