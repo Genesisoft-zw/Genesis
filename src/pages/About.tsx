@@ -193,6 +193,8 @@ export function About() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-blue-600 dark:bg-blue-700 rounded-xl transform -rotate-3 opacity-10"></div>
                   <img
+                    fetchPriority="low"
+                    loading="lazy"
                     src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
                     alt="Team Collaboration"
                     className="rounded-xl shadow-lg relative z-10"
@@ -217,6 +219,7 @@ export function About() {
                       <div className="relative">
                         <div className="absolute inset-0 bg-blue-600 dark:bg-blue-700 rounded-full transform rotate-3 opacity-10"></div>
                         <img
+                          loading="lazy"
                           src={member.image}
                           alt={member.name}
                           className="w-48 h-48 rounded-full mx-auto object-cover shadow-lg relative z-10"

@@ -168,6 +168,7 @@ export function Home() {
               <div className="relative">
                 <div className="absolute inset-0 bg-blue-600 dark:bg-blue-700 rounded-xl transform rotate-1 opacity-10"></div>
                 <img
+                  fetchPriority="high"
                   src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80"
                   alt="Digital Innovation"
                   className="rounded-xl shadow-2xl w-full object-cover h-[500px] relative z-10"

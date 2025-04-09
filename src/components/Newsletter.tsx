@@ -36,9 +36,9 @@ export function Newsletter() {
   };
 
   return (
-    <div className="bg-blue-500 dark:bg-blue-900 rounded-xl p-7 border-4 border-blue-500 shadow-lg transition-colors duration-300">
+    <div className="bg-blue-500 dark:bg-gray-900 rounded-xl p-7 border-4 border-blue-500 shadow-lg transition-colors duration-300">
       <h3 className="text-2xl font-bold text-white mb-4">Stay Updated</h3>
-      <p className="text-blue-100 mb-6">
+      <p className="text-white mb-6">
         Subscribe to our newsletter for the latest tech insights, industry
         trends, and exclusive offers.
       </p>
@@ -59,7 +59,8 @@ export function Newsletter() {
                 className="flex-grow px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600 transition-colors duration-300 max-w-full"
                 aria-label="Email address"
               />
-              <button
+                <button
+                name="subscribe"
                 type="submit"
                 className="bg-gray-900 dark:bg-white text-blue-600 hover:bg-blue-50 px-4 py-3 rounded-r-lg font-semibold transition-colors duration-300 flex items-center"
               >
@@ -69,7 +70,7 @@ export function Newsletter() {
             </div>
             {error && <p className="text-red-200 text-sm mt-2">{error}</p>}
           </div>
-          <p className="text-blue-200 text-xs">
+          <p className="text-white text-xs">
             We respect your privacy. Unsubscribe at any time.
           </p>
         </form>

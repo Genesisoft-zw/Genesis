@@ -13,6 +13,7 @@ export function Navigation() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <img
+                loading="lazy"
                 src={`${
                   window.matchMedia("(prefers-color-scheme: dark)").matches ||
                   document.documentElement.classList.contains("dark")
@@ -34,6 +35,7 @@ export function Navigation() {
             {/* Mobile menu button */}
             <div className="md:hidden">
               <button
+                name="menu-toggle"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
               >
@@ -88,30 +90,35 @@ export function Navigation() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-900 transition-colors duration-300">
             <Link
               to="/"
+              onClick={()=>setIsMenuOpen(!isMenuOpen)}
               className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               Home
             </Link>
             <Link
               to="/about"
+              onClick={()=>setIsMenuOpen(!isMenuOpen)}
               className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               About
             </Link>
             <Link
               to="/#services"
+              onClick={()=>setIsMenuOpen(!isMenuOpen)}
               className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               Services
             </Link>
             <Link
               to="/#values"
+              onClick={()=>setIsMenuOpen(!isMenuOpen)}
               className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               Values
             </Link>
             <Link
               to="/#contact"
+              onClick={()=>setIsMenuOpen(!isMenuOpen)}
               className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               Contact

@@ -1,9 +1,9 @@
 import React from 'react';
-import { Facebook, Twitter, Linkedin, Instagram, Mail, } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Mail, } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faTwitter, faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import {  faXTwitter } from '@fortawesome/free-brands-svg-icons';
 
 export function Footer() {
   const { isDarkMode } = useTheme();
@@ -15,6 +15,7 @@ export function Footer() {
           <div>
             <div className="flex items-center mb-4">
               <img
+                loading='lazy'
                 src="/logo-white.svg"
                 alt="Genesisoft Logo"
                 className="h-8 mr-2"
@@ -98,24 +99,28 @@ export function Footer() {
             <h4 className="text-lg font-semibold mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
               <a
+              aria-label="Facebook"
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <Facebook className="w-6 h-6" />
               </a>
               <a
+              aria-label="X"
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <FontAwesomeIcon icon={faXTwitter} className="w-6 h-6" />
               </a>
               <a
+              aria-label="LinkedIn"
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
+              aria-label="Instagram"
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
