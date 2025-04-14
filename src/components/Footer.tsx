@@ -15,7 +15,7 @@ export function Footer() {
           <div>
             <div className="flex items-center mb-4">
               <img
-                loading='lazy'
+                loading="lazy"
                 src="/logo-white.svg"
                 alt="Genesisoft Logo"
                 className="h-8 mr-2"
@@ -99,30 +99,33 @@ export function Footer() {
             <h4 className="text-lg font-semibold mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
               <a
-              aria-label="Facebook"
-                href="#"
+                aria-label="Facebook"
+                href="https://www.facebook.com/profile.php?id=61575020610088#"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
+                target="_blank"
               >
                 <Facebook className="w-6 h-6" />
               </a>
               <a
-              aria-label="X"
-                href="#"
+                aria-label="X"
+                href="https://x.com/genesisoft_"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
+                target="_blank"
               >
                 <FontAwesomeIcon icon={faXTwitter} className="w-6 h-6" />
               </a>
               <a
-              aria-label="LinkedIn"
+                aria-label="LinkedIn"
                 href="#"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
               <a
-              aria-label="Instagram"
-                href="#"
+                aria-label="Instagram"
+                href="https://www.instagram.com/genesisoft_"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
+                target='_blank'
               >
                 <Instagram className="w-6 h-6" />
               </a>
