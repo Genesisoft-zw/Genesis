@@ -1,5 +1,5 @@
 import React from 'react';
-import { Facebook, Linkedin, Instagram, Mail, } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Mail, Phone, } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -90,6 +90,15 @@ export function Footer() {
                   className="hover:text-white transition-colors duration-300"
                 >
                   info@genesisoft.co.zw
+                </a>
+              </li>
+              <li className="flex item-center text-gray-400">
+                <Phone className="w-4 h-4 mr-2" />
+                <a
+                  href="tel:+263772123456"
+                  className="hover:text-white transition-colors duration-300"
+                >
+                  +263 78 730 4495
                 </a>
               </li>
               <li className="text-gray-400">Harare, Zimbabwe</li>

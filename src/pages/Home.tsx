@@ -124,12 +124,13 @@ export function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>Home</title>
+           <Helmet>
+        <title>Genesisoft - Digital Solutions for Modern Businesses in Zimbabwe</title>
         <meta
           name="description"
-          content="Genesisoft, your partner in web, mobile, and design excellence. Get your website, mobile app, and graphic design solutions today!"
+          content="Zimbabwe's premier tech partner for web, mobile applications, and design excellence. Get innovative digital solutions tailored for your business needs."
         />
+        
         <link rel="canonical" href="https://www.genesisoft.co.zw/" />
       </Helmet>
       <div className="min-h-screen bg-blue-50 dark:bg-gray-900 pt-16 transition-colors duration-300">
