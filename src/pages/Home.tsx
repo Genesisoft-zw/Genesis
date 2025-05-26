@@ -132,6 +132,28 @@ export function Home() {
         />
         
         <link rel="canonical" href="https://www.genesisoft.co.zw/" />
+                // Add this right after your Helmet component in Home.tsx
+        <script type="application/ld+json">
+        {
+            JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Genesisoft",
+              "url": "https://www.genesisoft.co.zw",
+              "logo": "https://www.genesisoft.co.zw/logo.svg",
+              "description": "Zimbabwe's premier tech partner for web, mobile, and design excellence",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Harare",
+                "addressCountry": "ZW"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "email": "info@genesisoft.co.zw",
+                "contactType": "customer service"
+              }}
+            )}
+        </script>
       </Helmet>
       <div className="min-h-screen bg-blue-50 dark:bg-gray-900 pt-16 transition-colors duration-300">
         {/* Hero Section */}

@@ -11,7 +11,7 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center">
+                       <Link to="/" className="flex items-center">
               <img
                 loading="lazy"
                 src={`${
@@ -20,9 +20,12 @@ export function Navigation() {
                     ? "/logo-white.svg"
                     : "/logo.svg"
                 }`}
-                alt="Genesisoft Logo"
+                alt="Genesisoft"
                 className="h-8 mr-2"
               />
+              <span className="font-bold text-gray-900 dark:text-white sr-only">
+                Genesisoft - Digital Solutions for Modern Businesses
+              </span>
             </Link>
           </div>
 

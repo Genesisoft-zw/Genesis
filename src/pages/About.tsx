@@ -94,13 +94,24 @@ export function About() {
 
   return (
     <>
-      <Helmet>
-        <title>Home</title>
+            <Helmet>
+        <title>About Genesisoft - Our Story and Vision</title>
         <meta
           name="description"
-          content="Genesisoft specializes in web and mobile application development, graphic design, and ai chatbots."
+          content="Learn about Genesisoft's journey, our mission to transform Zimbabwe's digital landscape, and meet our leadership team."
         />
         <link rel="canonical" href="https://www.genesisoft.co.zw/about" />
+                // Add this inside your Helmet component in Home.tsx
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Genesisoft",
+            "url": "https://www.genesisoft.co.zw",
+            "logo": "https://www.genesisoft.co.zw/logo.svg",
+            "description": "Zimbabwe's premier tech partner for web, mobile applications, and design excellence"
+          })}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-white dark:bg-gray-900 pt-16 transition-colors duration-300">
