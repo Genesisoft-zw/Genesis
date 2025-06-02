@@ -77,6 +77,14 @@ export function Footer() {
                   Privacy Policy
                 </Link>
               </li>{" "}
+              <li>
+                <Link
+                  to="/terms-of-service"
+                  className="text-gray-400 hover:text-white transition-colors duration-300"
+                >
+                  Terms of Service
+                </Link>
+              </li>{" "}
               {/* Add the new link */}
             </ul>
           </div>

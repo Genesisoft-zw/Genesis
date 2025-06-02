@@ -4,6 +4,7 @@ import { Navigation } from './components/Navigation';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
 
 function App() {
   return (
@@ -13,6 +14,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route
+          path="/terms-of-service"
+          element={<TermsOfService />}
+        />
       </Routes>
     </>
   );
