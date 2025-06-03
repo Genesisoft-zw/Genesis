@@ -94,22 +94,23 @@ export function About() {
 
   return (
     <>
-            <Helmet>
+      <Helmet>
         <title>About Genesisoft - Our Story and Vision</title>
         <meta
           name="description"
           content="Learn about Genesisoft's journey, our mission to transform Zimbabwe's digital landscape, and meet our leadership team."
         />
         <link rel="canonical" href="https://www.genesisoft.co.zw/about" />
-                // Add this inside your Helmet component in Home.tsx
+        // Add this inside your Helmet component in Home.tsx
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "Genesisoft",
-            "url": "https://www.genesisoft.co.zw",
-            "logo": "https://www.genesisoft.co.zw/logo.svg",
-            "description": "Zimbabwe's premier tech partner for web, mobile applications, and design excellence"
+            name: "Genesisoft",
+            url: "https://www.genesisoft.co.zw",
+            logo: "https://www.genesisoft.co.zw/logo.svg",
+            description:
+              "Zimbabwe's premier tech partner for web, mobile applications, and design excellence",
           })}
         </script>
       </Helmet>
@@ -233,7 +234,7 @@ export function About() {
                           loading="lazy"
                           src={member.image}
                           alt={member.name}
-                          className="w-48 h-48 rounded-full mx-auto object-cover shadow-lg relative z-10"
+                          className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full mx-auto object-cover shadow-lg relative z-10"
                         />
                       </div>
                     </div>
