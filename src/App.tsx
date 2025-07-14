@@ -5,6 +5,7 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import { Analytics } from '@vercel/analytics/react';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           element={<TermsOfService />}
         />
       </Routes>
+      <Analytics />
     </>
   );
 }
