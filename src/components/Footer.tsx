@@ -1,13 +1,13 @@
-import React from 'react';
-import { Facebook, Linkedin, Instagram, Mail, Phone, } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {  faXTwitter } from '@fortawesome/free-brands-svg-icons';
+import React from "react";
+import { Facebook, Linkedin, Instagram, Mail, Phone } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXTwitter } from "@fortawesome/free-brands-svg-icons";
 
 export function Footer() {
   const { isDarkMode } = useTheme();
-  
+
   return (
     <footer className="bg-gray-900 dark:bg-gray-950 text-white py-12 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,7 +103,7 @@ export function Footer() {
               <li className="flex item-center text-gray-400">
                 <Phone className="w-4 h-4 mr-2" />
                 <a
-                  href="tel:+263772123456"
+                  href="tel:+263787304495"
                   className="hover:text-white transition-colors duration-300"
                 >
                   +263 78 730 4495
@@ -133,8 +133,9 @@ export function Footer() {
               </a>
               <a
                 aria-label="LinkedIn"
-                href="#"
+                href="https://www.linkedin.com/company/genesisoft"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
+                target="_blank"
               >
                 <Linkedin className="w-6 h-6" />
               </a>
@@ -142,7 +143,7 @@ export function Footer() {
                 aria-label="Instagram"
                 href="https://www.instagram.com/genesisoft_"
                 className="text-gray-400 hover:text-white transition-colors duration-300"
-                target='_blank'
+                target="_blank"
               >
                 <Instagram className="w-6 h-6" />
               </a>
