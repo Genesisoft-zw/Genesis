@@ -1,31 +1,48 @@
 import React, { useState } from "react";
 import { Send } from "lucide-react";
-import { supabase } from "../supabaseClient.js";
 
 export function Newsletter() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+    setIsSubmitting(true);
 
     // Basic email validation
     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
       setError("Please enter a valid email address");
+      setIsSubmitting(false);
       return;
     }
 
-    // Insert email into Supabase
-    const { error: insertError } = await supabase
-      .from("newsletters")
-      .insert([{ email }]);
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
-    if (insertError) {
-      setError("Error subscribing to newsletter. Please try again later.");
-    } else {
-      setSubscribed(true);
-      setEmail("");
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(
+          data.error ||
+            "Error subscribing to newsletter. Please try again later."
+        );
+      } else {
+        setSubscribed(true);
+        setEmail("");
+      }
+    } catch (err) {
+      setError("Network error. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
 
     // Reset success message after 5 seconds
@@ -58,13 +75,17 @@ export function Newsletter() {
                 placeholder="Your email address"
                 className="flex-grow px-4 py-3 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:border-gray-600 transition-colors duration-300 max-w-full"
                 aria-label="Email address"
+                disabled={isSubmitting}
               />
-                <button
+              <button
                 aria-label="subscribe"
                 type="submit"
-                className="bg-gray-900 dark:bg-white text-blue-600 hover:bg-blue-50 px-4 py-3 rounded-r-lg font-semibold transition-colors duration-300 flex items-center"
+                disabled={isSubmitting}
+                className="bg-gray-900 dark:bg-white text-blue-600 hover:bg-blue-50 px-4 py-3 rounded-r-lg font-semibold transition-colors duration-300 flex items-center disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                <span className="hidden md:inline">Subscribe</span>
+                <span className="hidden md:inline">
+                  {isSubmitting ? "Subscribing..." : "Subscribe"}
+                </span>
                 <Send className="ml-2 w-4 h-4" />
               </button>
             </div>

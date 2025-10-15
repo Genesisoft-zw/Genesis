@@ -31,6 +31,39 @@ We specialize in:
   AI and Machine Learning specialist.  
   Expertise: Machine Learning, Full-stack Development, AI Chatbots, Team Leadership
 
+## Development Setup
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+- Resend account with API key
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables for newsletter integration:
+   - See [RESEND_SETUP.md](./RESEND_SETUP.md) for detailed instructions
+   - Create a `.env.local` file with your Resend credentials
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Build for production:
+   ```bash
+   npm run build
+   ```
+
+### Newsletter Integration
+
+This project uses [Resend](https://resend.com) for newsletter subscriptions via Vercel Serverless Functions. For setup instructions, see [RESEND_SETUP.md](./RESEND_SETUP.md).
+
 ## Contact
 
 - Website: [https://www.genesisoft.co.zw](https://www.genesisoft.co.zw)
