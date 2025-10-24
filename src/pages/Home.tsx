@@ -124,78 +124,111 @@ export function Home() {
 
   return (
     <>
-           <Helmet>
-        <title>Genesisoft - Digital Solutions for Modern Businesses in Zimbabwe</title>
+      <Helmet>
+        <title>
+          Genesisoft - Digital Solutions for Modern Businesses in Zimbabwe
+        </title>
         <meta
           name="description"
           content="Zimbabwe's premier tech partner for web, mobile applications, and design excellence. Get innovative digital solutions tailored for your business needs."
         />
-        
         <link rel="canonical" href="https://www.genesisoft.co.zw/" />
-                // Add this right after your Helmet component in Home.tsx
+        // Add this right after your Helmet component in Home.tsx
         <script type="application/ld+json">
-        {
-            JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              "name": "Genesisoft",
-              "url": "https://www.genesisoft.co.zw",
-              "logo": "https://www.genesisoft.co.zw/logo.svg",
-              "description": "Zimbabwe's premier tech partner for web, mobile, and design excellence",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Harare",
-                "addressCountry": "ZW"
-              },
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "email": "info@genesisoft.co.zw",
-                "contactType": "customer service"
-              }}
-            )}
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Genesisoft",
+            url: "https://www.genesisoft.co.zw",
+            logo: "https://www.genesisoft.co.zw/logo.svg",
+            description:
+              "Zimbabwe's premier tech partner for web, mobile, and design excellence",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Harare",
+              addressCountry: "ZW",
+            },
+            contactPoint: {
+              "@type": "ContactPoint",
+              email: "info@genesisoft.co.zw",
+              contactType: "customer service",
+            },
+          })}
         </script>
       </Helmet>
       <div className="min-h-screen bg-blue-50 dark:bg-gray-900 pt-16 transition-colors duration-300">
         {/* Hero Section */}
         <section
           id="home"
-          className="pt-20 pb-32 hero-gradient dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden transition-colors duration-300"
+          className="relative pt-20 pb-32 hero-gradient dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden transition-colors duration-300 grid-background"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center pt-20 animate-on-scroll">
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6 leading-tight transition-colors duration-300">
-                Digital Solutions for Modern Business
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 transition-colors duration-300">
-                Zimbabwe's premier tech partner for web, mobile, and design
-                excellence
-              </p>
-              <div className="mt-8 space-x-4 ">
-                <a
-                  href="#contact"
-                  className="button-primary dark:bg-blue-700 dark:hover:bg-blue-600 inline-flex items-center my-2"
-                >
-                  Get Started
-                  <ArrowRight className="ml-2 w-5 h-5" />
-                </a>
-                <a
-                  href="#services"
-                  className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-blue-600 dark:border-blue-500 text-blue-600 dark:text-blue-500 font-semibold
-                         hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300"
-                >
-                  Our Services
-                </a>
+            <div className="grid lg:grid-cols-2 gap-12 items-center pt-20">
+              {/* Left Content */}
+              <div className="animate-on-scroll">
+                {/* Badge */}
+                <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 mb-6">
+                  <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                    🚀 Trusted by innovative businesses
+                  </span>
+                </div>
+
+                {/* Main Heading */}
+                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight transition-colors duration-300">
+                  Digital Solutions for{" "}
+                  <span className="text-blue-600 dark:text-blue-400">
+                    Modern Business
+                  </span>
+                </h1>
+
+                {/* Subtitle */}
+                <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed transition-colors duration-300">
+                  Your powerful tech partner for web applications, mobile apps,
+                  AI solutions, and design excellence
+                </p>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="#contact"
+                    className="button-primary dark:bg-blue-700 dark:hover:bg-blue-600 inline-flex items-center justify-center group"
+                  >
+                    Get Started
+                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <a
+                    href="#services"
+                    className="inline-flex items-center justify-center px-6 py-3 rounded-lg border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white font-semibold
+                         hover:border-blue-600 dark:hover:border-blue-500 hover:text-blue-600 dark:hover:text-blue-400 transition-all duration-300"
+                  >
+                    Explore Services
+                  </a>
+                </div>
+
+                {/* Additional Info */}
+                <p className="mt-6 text-sm text-gray-500 dark:text-gray-400">
+                  Free consultation • Harare, Zimbabwe
+                </p>
               </div>
-            </div>
-            <div className="mt-16 animate-on-scroll">
-              <div className="relative">
-                <div className="absolute inset-0 bg-blue-600 dark:bg-blue-700 rounded-xl transform rotate-1 opacity-10"></div>
-                <img
-                  fetchPriority="high"
-                  src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80"
-                  alt="Digital Innovation"
-                  className="rounded-xl shadow-2xl w-full object-cover h-[500px] relative z-10"
-                />
+
+              {/* Right Visual */}
+              <div className="relative hidden lg:block animate-on-scroll">
+                <div className="relative">
+                  {/* Background decoration */}
+                  <div className="absolute inset-0 bg-blue-600/10 dark:bg-blue-500/10 rounded-2xl transform rotate-3"></div>
+
+                  {/* Main image */}
+                  <img
+                    fetchPriority="high"
+                    src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&auto=format&fit=crop&w=2850&q=80"
+                    alt="Digital Innovation"
+                    className="relative rounded-2xl shadow-2xl w-full object-cover h-[600px] transform hover:scale-105 transition-transform duration-500"
+                  />
+
+                  {/* Floating elements */}
+                  <div className="absolute -top-6 -right-6 w-24 h-24 bg-blue-600 dark:bg-blue-500 rounded-full opacity-20 blur-2xl"></div>
+                  <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-purple-600 dark:bg-purple-500 rounded-full opacity-20 blur-2xl"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -204,7 +237,7 @@ export function Home() {
         {/* Services Section */}
         <section
           id="services"
-          className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
+          className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300 grid-background"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="section-heading dark:text-white animate-on-scroll transition-colors duration-300">
@@ -252,7 +285,7 @@ export function Home() {
         {/* Values Section */}
         <section
           id="values"
-          className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300"
+          className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300 grid-background"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="section-heading dark:text-white animate-on-scroll transition-colors duration-300">
@@ -282,7 +315,7 @@ export function Home() {
         {/* Contact Section */}
         <section
           id="contact"
-          className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300"
+          className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300 grid-background"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="section-heading dark:text-white animate-on-scroll transition-colors duration-300">
@@ -299,7 +332,7 @@ export function Home() {
         {/* Newsletter Section */}
         <section
           id="newsletter"
-          className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300"
+          className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300 grid-background"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto animate-on-scroll">

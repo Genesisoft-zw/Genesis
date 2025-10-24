@@ -134,7 +134,7 @@ export function About() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <section className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300 grid-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
@@ -158,7 +158,7 @@ export function About() {
         </section>
 
         {/* Achievements Section */}
-        <section className="py-16 bg-blue-50 dark:bg-gray-800 transition-colors duration-300">
+        <section className="py-16 bg-blue-50 dark:bg-gray-800 transition-colors duration-300 grid-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12 animate-on-scroll transition-colors duration-300">
               Our Achievements
@@ -180,7 +180,7 @@ export function About() {
         </section>
 
         {/* Mission Section */}
-        <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
+        <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300 grid-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="animate-on-scroll">
@@ -218,7 +218,7 @@ export function About() {
         </section>
 
         {/* Team Section */}
-        <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
+        <section className="py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300 grid-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 align-items-center">
             <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-16 animate-on-scroll transition-colors duration-300">
               Meet Our Leadership Team

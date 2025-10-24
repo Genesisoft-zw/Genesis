@@ -83,7 +83,7 @@ const TermsOfService = () => {
           href="https://www.genesisoft.co.zw/terms-of-service"
         />
       </Helmet>
-      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 grid-background">
         {/* Main content */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           {/* Terms of Service Header */}
@@ -115,7 +115,7 @@ const TermsOfService = () => {
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {section.description}
               </p>
-              
+
               {section.points && (
                 <ul className="mt-4 space-y-2 text-gray-600 dark:text-gray-300">
                   {section.points.map((point, pointIndex) => (
@@ -134,9 +134,10 @@ const TermsOfService = () => {
           {/* Privacy Policy Reference */}
           <section className="mt-12 p-6 bg-gray-50 dark:bg-gray-800 rounded-lg transition-colors duration-300">
             <p className="text-gray-600 dark:text-gray-300">
-              For more information about how we handle personal data, please see our{" "}
-              <a 
-                href="/privacy-policy" 
+              For more information about how we handle personal data, please see
+              our{" "}
+              <a
+                href="/privacy-policy"
                 className="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline transition-colors duration-200"
               >
                 Privacy Policy

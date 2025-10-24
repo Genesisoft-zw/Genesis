@@ -14,7 +14,7 @@ export function NotFound() {
         />
       </Helmet>
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300 flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-16 grid-background">
         <div className="max-w-2xl w-full text-center">
           {/* 404 Animation */}
           <div className="relative mb-8">
