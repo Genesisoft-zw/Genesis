@@ -1,4 +1,7 @@
 User-agent: *
+Allow: /
 Disallow: /private/
 Disallow: /tmp/
 Disallow: /admin/
+
+Sitemap: https://www.genesisoft.co.zw/sitemap.xml
