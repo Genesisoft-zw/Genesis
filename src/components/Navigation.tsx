@@ -65,12 +65,12 @@ export function Navigation() {
             >
               Services
             </a>
-            <a
+            {/* <a
               href="/#values"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               Values
-            </a>
+            </a> */}
             <a
               href="/#contact"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
@@ -82,6 +82,12 @@ export function Navigation() {
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               About
+            </Link>
+            <Link
+              to="/blog"
+              className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+            >
+              Blog
             </Link>
           </div>
         </div>
@@ -104,6 +110,13 @@ export function Navigation() {
               className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               About
+            </Link>
+            <Link
+              to="/blog"
+              onClick={()=>setIsMenuOpen(!isMenuOpen)}
+              className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
+            >
+              Blog
             </Link>
             <Link
               to="/#services"
