@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Code2,
   Palette,
   Smartphone,
-  Database,
-  Lightbulb,
-  Star,
-  Shield,
-  TrendingUp,
   ArrowRight,
   MessageSquareText,
 } from "lucide-react";
@@ -17,6 +13,8 @@ import { Newsletter } from "../components/Newsletter";
 import { Helmet } from "react-helmet-async";
 
 export function Home() {
+  const howWeWorkRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -26,7 +24,7 @@ export function Home() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("fade-in");
+          entry.target.classList.add("is-visible");
           observer.unobserve(entry.target);
         }
       });
@@ -37,6 +35,62 @@ export function Home() {
     });
 
     return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const container = howWeWorkRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const rect = container.getBoundingClientRect();
+      const viewportHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+
+      const basePadding = 32; // base padding-top in px
+      const extraPadding = 80; // additional padding as it becomes "pinned"
+      const { top, bottom, height } = rect;
+
+      // If the section is completely above or below the viewport, keep the
+      // last active step and reset to base padding.
+      if (bottom <= 0 || top >= viewportHeight) {
+        container.style.paddingTop = `${basePadding}px`;
+        container.setAttribute("data-pinned", "false");
+        return;
+      }
+
+      // Compute progress only while the section is actually in view.
+      const scrollRange = height + viewportHeight;
+      const rawProgress = (viewportHeight - top) / scrollRange;
+      const progress = Math.min(Math.max(rawProgress, 0), 1);
+
+      const paddingTop = basePadding + extraPadding * progress;
+      container.style.paddingTop = `${paddingTop}px`;
+      container.setAttribute(
+        "data-pinned",
+        progress > 0.1 && progress < 0.95 ? "true" : "false"
+      );
+
+      // Map scroll progress to active step (01 → 04) so conversation + selection
+      // change as the user scrolls through the section.
+      const stepsCount = processSteps.length;
+      if (stepsCount > 0) {
+        const indexFromScroll = Math.min(
+          stepsCount - 1,
+          Math.max(0, Math.floor(progress * stepsCount))
+        );
+
+        setActiveStepIndex((prev) =>
+          prev === indexFromScroll ? prev : indexFromScroll
+        );
+      }
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const services = [
@@ -50,6 +104,7 @@ export function Home() {
         "SEO Optimization",
         "Performance Focused",
       ],
+      slug: "web-development",
     },
 
     {
@@ -64,6 +119,7 @@ export function Home() {
         "Personalized Interactions",
         "Multi-platform Integration",
       ],
+      slug: "ai-chatbots",
     },
 
     {
@@ -74,6 +130,7 @@ export function Home() {
       description:
         "High-performance Android and iOS apps built for seamless user experiences.",
       features: ["Native Apps", "Cross-platform", "UI/UX Design"],
+      slug: "mobile-apps",
     },
 
     {
@@ -82,6 +139,7 @@ export function Home() {
       description:
         "Creative logos, branding, and marketing materials that elevate your business identity.",
       features: ["Brand Identity", "Print Design", "Digital Assets"],
+      slug: "graphic-design",
     },
 
     // {
@@ -92,35 +150,45 @@ export function Home() {
     // },
   ];
 
-  const values = [
+  const processSteps = [
     {
-      icon: (
-        <Lightbulb className="w-10 h-10 text-orange-500 dark:text-orange-400" />
-      ),
-      title: "Innovation",
-      description: "Embracing creativity and cutting-edge solutions.",
-    },
-    {
-      icon: <Star className="w-10 h-10 text-orange-500 dark:text-orange-400" />,
-      title: "Excellence",
-      description: "Delivering unmatched quality and exceeding expectations.",
-    },
-    {
-      icon: (
-        <Shield className="w-10 h-10 text-orange-500 dark:text-orange-400" />
-      ),
-      title: "Integrity",
+      title: "Discovery & Initial Consultation",
       description:
-        "Operating with honesty and transparency in all interactions.",
+        "We start by understanding your goals, challenges, and vision, gathering insights about your business, customers, and existing digital presence.",
+      clientMessage:
+        "We'd like to explore how digital solutions can help streamline our operations and customer experience.",
+      replyMessage:
+        "Great, let's schedule a consultation to understand your goals, current systems, and priorities so we can recommend the right solution mix.",
     },
     {
-      icon: (
-        <TrendingUp className="w-10 h-10 text-orange-500 dark:text-orange-400" />
-      ),
-      title: "Growth",
-      description: "Committed to continuous learning and improvement.",
+      title: "Tailored Digital Strategy",
+      description:
+        "Our team designs a clear, results-driven roadmap across web, mobile, and AI solutions, aligned with your budget, timeline, and growth targets.",
+      clientMessage:
+        "Once you understand our needs, what does the actual plan look like?",
+      replyMessage:
+        "We'll create a practical roadmap outlining recommended products, timelines, and investment, so you know exactly what we're building and why.",
+    },
+    {
+      title: "Design, Build & Implementation",
+      description:
+        "We prototype, design, and develop your solution using modern technologies, keeping you involved through every sprint for transparency and agility.",
+      clientMessage: "How involved will we be while everything is being built?",
+      replyMessage:
+        "You stay in the loop with regular check-ins, demos, and clear milestones while our team handles the heavy lifting.",
+    },
+    {
+      title: "Launch & Continuous Support",
+      description:
+        "After launch, we monitor performance, refine features, and provide ongoing support to ensure your digital products keep delivering value.",
+      clientMessage:
+        "What happens after launch? We don't want things to just stop there.",
+      replyMessage:
+        "We stay with you post-launch, monitoring performance, refining features, and supporting new ideas as your business grows.",
     },
   ];
+
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
 
   return (
     <>
@@ -163,13 +231,13 @@ export function Home() {
           className="relative pt-20 pb-32 hero-gradient dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden transition-colors duration-300 grid-background"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 items-center pt-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center pt-2">
               {/* Left Content */}
               <div className="animate-on-scroll">
                 {/* Badge */}
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30 mb-6">
                   <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                    🚀 Trusted by innovative businesses
+                    Trusted by innovative businesses
                   </span>
                 </div>
 
@@ -269,45 +337,125 @@ export function Home() {
                       </li>
                     ))}
                   </ul>
-                  <a
-                    href="#contact"
+                  <Link
+                    to={`/services/${service.slug}`}
                     className="text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 font-semibold group flex items-center transition-colors duration-300"
                   >
                     Learn More
                     <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" />
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Values Section */}
+        {/* How We Work Section */}
         <section
-          id="values"
-          className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-800 dark:to-gray-900 transition-colors duration-300 grid-background"
+          id="how-we-work"
+          className="pt-8 pb-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300 grid-background"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            ref={howWeWorkRef}
+            className="relative z-10 flex w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex-col gap-12 transition-[padding-top] duration-300 ease-[cubic-bezier(.165,.84,.44,1)] lg:gap-16 lg:min-h-screen"
+          >
             <h2 className="section-heading dark:text-white animate-on-scroll transition-colors duration-300">
-              Our Core Values
+              How We Work
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <div
-                  key={index}
-                  className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md card-hover animate-on-scroll transition-colors duration-300"
-                >
-                  <div className="mb-4 flex justify-center transform transition-transform duration-300 hover:scale-110">
-                    {value.icon}
-                  </div>
-                  <h3 className="text-xl font-semibold text-center mb-2 dark:text-white transition-colors duration-300">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-center transition-colors duration-300">
-                    {value.description}
-                  </p>
+            <p className="mt-4 max-w-2xl mx-auto text-center text-gray-600 dark:text-gray-300 transition-colors duration-300">
+              From the first conversation to long-term support, we guide you
+              through a clear, collaborative process designed to deliver
+              reliable, high-impact digital solutions.
+            </p>
+            <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              {/* Chat-style preview - hidden on mobile */}
+              <div className="hidden lg:block space-y-6 animate-on-scroll">
+                <div className="inline-flex items-center px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-900/30">
+                  <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
+                    Client • Genesisoft Conversation
+                  </span>
                 </div>
-              ))}
+
+                <div className="space-y-4">
+                  {/* Client message */}
+                  <div className="flex items-start gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-600 text-white font-semibold">
+                      C
+                    </div>
+                    <div className="max-w-md rounded-2xl bg-white dark:bg-gray-800 px-5 py-4 shadow-md">
+                      <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                        Client
+                      </p>
+                      <p className="text-sm text-gray-700 dark:text-gray-200 leading-relaxed">
+                        {processSteps[activeStepIndex].clientMessage}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Genesisoft reply */}
+                  <div className="flex justify-end">
+                    <div className="flex items-start gap-3">
+                      <div className="max-w-md rounded-2xl bg-gray-900 text-white px-5 py-4 shadow-xl">
+                        <p className="text-sm font-semibold mb-1">Genesisoft</p>
+                        <p className="text-sm text-gray-100 leading-relaxed">
+                          {processSteps[activeStepIndex].replyMessage}
+                        </p>
+                      </div>
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-blue-500 text-white font-semibold">
+                        G
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Vertical step list */}
+              <div className="relative animate-on-scroll">
+                <div className="absolute left-4 top-0 bottom-0 hidden lg:block border-l border-gray-200 dark:border-gray-700" />
+                <div className="space-y-4">
+                  {processSteps.map((step, index) => {
+                    const isActive = index === activeStepIndex;
+                    return (
+                      <button
+                        key={step.title}
+                        type="button"
+                        onClick={() => setActiveStepIndex(index)}
+                        className={`relative w-full text-left rounded-xl px-6 py-5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                          isActive
+                            ? "bg-white dark:bg-gray-800 shadow-md border border-blue-500/40"
+                            : "bg-transparent hover:bg-white/40 dark:hover:bg-gray-800/40 border border-transparent"
+                        }`}
+                      >
+                        <div className="flex items-center gap-4">
+                          <div
+                            className={`flex h-9 w-9 items-center justify-center rounded-full border-2 text-sm font-semibold ${
+                              isActive
+                                ? "bg-blue-600 text-white border-blue-600"
+                                : "bg-white dark:bg-gray-900 text-blue-600 border-blue-300 dark:border-blue-500/60"
+                            }`}
+                          >
+                            {`0${index + 1}`}
+                          </div>
+                          <div>
+                            <h3
+                              className={`text-base md:text-lg font-semibold mb-1 transition-colors duration-300 ${
+                                isActive
+                                  ? "text-blue-600 dark:text-blue-400"
+                                  : "text-gray-900 dark:text-white"
+                              }`}
+                            >
+                              {step.title}
+                            </h3>
+                            <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </section>

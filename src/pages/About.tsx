@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Users, Award, Calendar, Globe, CheckCircle2 } from "lucide-react";
+import { Users, Award, Calendar, Globe, Lightbulb, Star, Shield, TrendingUp } from "lucide-react";
 import { Footer } from "../components/Footer";
 import { Helmet } from "react-helmet-async";
 
@@ -13,7 +13,7 @@ export function About() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("fade-in");
+          entry.target.classList.add("is-visible");
           observer.unobserve(entry.target);
         }
       });
@@ -49,13 +49,35 @@ export function About() {
     // }
   ];
 
-  const achievements = [
-    // 'Best Tech Startup Award 2023',
-    // 'ISO 27001 Certified',
-    // 'Microsoft Gold Partner',
-    // 'Top 10 African Tech Companies 2024'
-    "Coming Soon",
-    "Coming Soon",
+
+  const values = [
+    {
+      icon: (
+        <Lightbulb className="w-10 h-10 text-orange-500 dark:text-orange-400" />
+      ),
+      title: "Innovation",
+      description: "Embracing creativity and cutting-edge solutions.",
+    },
+    {
+      icon: <Star className="w-10 h-10 text-orange-500 dark:text-orange-400" />,
+      title: "Excellence",
+      description: "Delivering unmatched quality and exceeding expectations.",
+    },
+    {
+      icon: (
+        <Shield className="w-10 h-10 text-orange-500 dark:text-orange-400" />
+      ),
+      title: "Integrity",
+      description:
+        "Operating with honesty and transparency in all interactions.",
+    },
+    {
+      icon: (
+        <TrendingUp className="w-10 h-10 text-orange-500 dark:text-orange-400" />
+      ),
+      title: "Growth",
+      description: "Committed to continuous learning and improvement.",
+    },
   ];
 
   const team = [
@@ -157,28 +179,6 @@ export function About() {
           </div>
         </section>
 
-        {/* Achievements Section */}
-        <section className="py-16 bg-blue-50 dark:bg-gray-800 transition-colors duration-300 grid-background">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12 animate-on-scroll transition-colors duration-300">
-              Our Achievements
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {achievements.map((achievement, index) => (
-                <div
-                  key={index}
-                  className="flex items-center space-x-3 bg-white dark:bg-gray-700 p-4 rounded-lg shadow-md animate-on-scroll transition-colors duration-300"
-                >
-                  <CheckCircle2 className="w-6 h-6 text-blue-600 dark:text-blue-400 flex-shrink-0" />
-                  <span className="text-gray-800 dark:text-gray-200 font-medium transition-colors duration-300">
-                    {achievement}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Mission Section */}
         <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300 grid-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -213,6 +213,33 @@ export function About() {
                   />
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Core Values Section */}
+        <section className="py-20 bg-gradient-to-br from-blue-50 to-white dark:from-gray-700 dark:to-gray-800 transition-colors duration-300 grid-background">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-12 animate-on-scroll transition-colors duration-300">
+              Our Core Values
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, index) => (
+                <div
+                  key={index}
+                  className="p-6 bg-white dark:bg-gray-700 rounded-xl shadow-md card-hover animate-on-scroll transition-colors duration-300"
+                >
+                  <div className="mb-4 flex justify-center transform transition-transform duration-300 hover:scale-110">
+                    {value.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-center mb-2 dark:text-white transition-colors duration-300">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-300 text-center transition-colors duration-300">
+                    {value.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "./ThemeToggle";
@@ -59,12 +59,12 @@ export function Navigation() {
             >
               Home
             </Link>
-            <a
-              href="/#services"
+            <Link
+              to="/services"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               Services
-            </a>
+            </Link>
             {/* <a
               href="/#values"
               className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
@@ -106,7 +106,7 @@ export function Navigation() {
             </Link>
 
             <Link
-              to="/#services"
+              to="/services"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >

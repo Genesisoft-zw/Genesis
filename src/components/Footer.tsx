@@ -54,12 +54,12 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href="/#values"
+                <Link
+                  to="/blog"
                   className="text-gray-400 hover:text-white transition-colors duration-300"
                 >
-                  Values
-                </a>
+                  Blog
+                </Link>
               </li>
               <li>
                 <a
